@@ -13,10 +13,10 @@ while (!(isNaN(difficolta))) {
   delete(difficolta);
   difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase().toString();
 }
-while (!(difficolta == "facile") || !(difficolta == "medio") || !(difficolta == "difficile")) {
-  delete(difficolta);
-  difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase();
-}
+// while (!(difficolta == "facile") || !(difficolta == "medio") || !(difficolta == "difficile")) {
+//   delete(difficolta);
+//   difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase();
+// }
 
 
 
