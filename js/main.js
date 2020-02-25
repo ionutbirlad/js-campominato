@@ -8,15 +8,13 @@
 */
 
 var nDiff = 0;
-var difficolta = prompt("Scegli il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase().toString();
+var difficolta = prompt("Scegli il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'");
 while (!(isNaN(difficolta))) {
-  delete(difficolta);
-  difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase().toString();
+  difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'");
 }
-// while (!(difficolta == "facile") || !(difficolta == "medio") || !(difficolta == "difficile")) {
-//   delete(difficolta);
-//   difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase();
-// }
+while ((difficolta.toLowerCase() !== "facile") || (difficolta.toLowerCase() !== "medio") || (difficolta.toLowerCase() !== "difficile")) {
+  difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'");
+}
 
 
 
@@ -33,7 +31,7 @@ for (var i = 1; i <= nDiff; i++) {
   var g = generaRandomMinMax(1, 100);
   numeriGenerati.push(g);
 }
-console.log(numeriGenerati);
+// console.log(numeriGenerati);
 
 var i = 1;
 var res;
