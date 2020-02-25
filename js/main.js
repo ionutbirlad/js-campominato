@@ -12,7 +12,7 @@ var difficolta = prompt("Scegli il livello di difficoltà tra 'Facile' 'Medio' e
 while (!(isNaN(difficolta))) {
   difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'");
 }
-while ((difficolta.toLowerCase() !== "facile") || (difficolta.toLowerCase() !== "medio") || (difficolta.toLowerCase() !== "difficile")) {
+while ((difficolta.toLowerCase() !== "facile") && (difficolta.toLowerCase() !== "medio") && (difficolta.toLowerCase() !== "difficile")) {
   difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'");
 }
 
@@ -33,15 +33,17 @@ for (var i = 1; i <= nDiff; i++) {
 }
 // console.log(numeriGenerati);
 
-var i = 1;
-var res;
-while (i <= 16) {
-  i++;
-  var numeroUtente = parseInt(prompt("Inserisci un numero"));
-  res = true;
-  if (numeriGenerati.includes(numeroUtente)) {
-    res = false;
-    break;
+while (isNaN(numeroUtente)) {
+  var i = 1;
+  var res;
+  while (i <= 16) {
+    i++;
+    var numeroUtente = parseInt(prompt("Inserisci un numero"));
+    res = true;
+    if (numeriGenerati.includes(numeroUtente)) {
+      res = false;
+      break;
+    }
   }
 }
 
