@@ -7,11 +7,31 @@
   6. Comunico i risultati.
 */
 
-var numeriGenerati = [];
+var nDiff = 0;
+var difficolta = prompt("Scegli il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase().toString();
+while (!(isNaN(difficolta))) {
+  delete(difficolta);
+  difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase().toString();
+}
+while (!(difficolta == "facile") || !(difficolta == "medio") || !(difficolta == "difficile")) {
+  delete(difficolta);
+  difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'").toLowerCase();
+}
 
-for (var i = 1; i <= 100; i++) {
-  var n = generaRandomMinMax(1, 100);
-  numeriGenerati.push(n);
+
+
+if (difficolta === "facile") {
+  nDiff = 100;
+} else if (difficolta === "medio") {
+  nDiff = 80;
+} else if (difficolta === "difficile") {
+  nDiff = 50;
+}
+
+var numeriGenerati = [];
+for (var i = 1; i <= nDiff; i++) {
+  var g = generaRandomMinMax(1, 100);
+  numeriGenerati.push(g);
 }
 console.log(numeriGenerati);
 
