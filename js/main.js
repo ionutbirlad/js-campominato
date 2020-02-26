@@ -1,60 +1,77 @@
-/*
-  1. Mi creo le variabili necessarie;
-  2. Genero i numeri con un ciclo for (magari faceno una fuznione);
-  3. Faccio inserire i 16 numeri all'utente;
-  4. Contemporaneamente cnfronto gli input inseriti con i numeri generati dal pc;
-  5. Gestisco la fine della partita;
-  6. Comunico i risultati.
-*/
 
-var nDiff = 0;
 var difficolta = prompt("Scegli il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'");
-while (!(isNaN(difficolta))) {
-  difficolta = prompt("Hai inserito un numero. Devi scegliere il livello di difficoltà tra 'Facile' 'Medio' e 'Difficile'");
-}
-while ((difficolta.toLowerCase() !== "facile") && (difficolta.toLowerCase() !== "medio") && (difficolta.toLowerCase() !== "difficile")) {
-  difficolta = prompt("Devi scegliere una difficoltà tra 'Facile' 'Medio' e 'Difficile'");
-}
 
-
-
-if (difficolta === "facile") {
-  nDiff = 100;
+if (difficolta.toLowerCase() === "facile") {
+  dimensioneCampo = 100;
 } else if (difficolta === "medio") {
-  nDiff = 80;
+  dimensioneCampo = 80;
 } else if (difficolta === "difficile") {
-  nDiff = 50;
+  dimensioneCampo = 50;
 }
 
-var numeriGenerati = [];
-for (var i = 1; i <= nDiff; i++) {
-  var g = generaRandomMinMax(1, 100);
-  numeriGenerati.push(g);
-}
-// console.log(numeriGenerati);
+console.log("Hai scelto il seguente livello di difficoltà: " + difficolta);
 
-while (isNaN(numeroUtente)) {
-  var i = 1;
-  var res;
-  while (i <= 16) {
-    i++;
-    var numeroUtente = parseInt(prompt("Inserisci un numero"));
-    res = true;
-    if (numeriGenerati.includes(numeroUtente)) {
-      res = false;
-      break;
-    }
+var dimensioneCampo = 100;
+var totaleMine = 16;
+var bombe = [];
+var bandierinePiazzate = [];
+var bandierineMax = dimensioneCampo - totaleMine;
+
+
+
+
+while (bombe.length < totaleMine) {
+  var bombaGenerata = generaRandomMinMax(1, dimensioneCampo);
+  if (!bombe.includes(bombaGenerata)) {
+    bombe.push(bombaGenerata);
   }
 }
 
-if (res == true) {
-  console.log("Hai vinto!!");
-} else if (res == false) {
-  console.log("Purtroppo hai perso..");
+var boom = false;
+while ((bandierinePiazzate.length < bandierineMax) && (boom === false)) {
+  var bandierinaInserita = parseInt(prompt("Inserisci un numero da 1 a " + dimensioneCampo));
+  if (!bandierinePiazzate.includes(bandierinaInserita)) {
+    if (!bombe.includes(bandierinaInserita)) {
+      if ((bandierinaInserita >= 1) && (bandierinaInserita <= 100)) {
+        if (!isNaN(bandierinaInserita)) {
+          bandierinePiazzate.push(bandierinaInserita);
+          if (bandierinePiazzate.lengt == bandierineMax) {
+            console.log("Hai vinto!!");
+          } else {
+            console.log("Hai inserito una bandierina");
+          }
+        } else {
+          alert("Non hai inserito un numero");
+        }
+      } else {
+        console.log("Devi inserire un numero compreso tra 1 e 100");
+      }
+    } else {
+      console.log("Hai perso");
+      boom = true;
+    }
+  } else {
+    console.log("Questo numero è già stato inserito");
+  }
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
 function generaRandomMinMax(min, max) {
-    var numeroRandom = Math.floor(Math.random() * (max - min + 1) ) + min;
-    return numeroRandom;
-}
+     var numeroRandom = Math.floor(Math.random() * (max - min + 1) ) + min;
+     return numeroRandom;
+ }
