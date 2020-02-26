@@ -56,20 +56,6 @@ while ((bandierinePiazzate.length < bandierineMax) && (boom === false)) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 function generaRandomMinMax(min, max) {
      var numeroRandom = Math.floor(Math.random() * (max - min + 1) ) + min;
